@@ -28,15 +28,22 @@ namespace TreeData
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Get all logical drives on computer
             var drives = Directory.GetLogicalDrives();
 
             foreach (var drive in drives)
             {
-                var item = new TreeViewItem();
+                // Create tree item for each drive with a Header and Tag
+                var item = new TreeViewItem
+                {
+                    Header = drive,
+                    Tag = drive
+                };
 
-                item.Header = drive;
+                // Add dummy data to item
                 item.Items.Add(null);
 
+                // Add the item to the Tree View
                 FolderView.Items.Add(item);
             }
         }
